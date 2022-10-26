@@ -12,12 +12,18 @@ public class IterativeMethods {
 	 * @return the sum of the first n terms of the geometric series (1/2 + 1/4 + 1/8
 	 *         ...)
 	 */
+
+	// TODO: mark as pass
 	public static double geometricSum(int n) {
-		double sum = 0.0;
-		for (int power = 1; power <= n; ++power) {
-			sum = sum + Math.pow(0.5, power);
+
+	
+		if(n == 1) {
+			return 0.5;
 		}
-		return sum;
+		else {
+			System.out.println(geometricSum(n - 1) + Math.pow(0.5, n));
+			return geometricSum(n - 1) + Math.pow(0.5, n);
+		}
 	}
 
 	/**
@@ -26,12 +32,13 @@ public class IterativeMethods {
 	 * @return greatest common divisor of p and q
 	 */
 	public static int gcd(int p, int q) {
-		while (q != 0) {
-			int temp = q;
-			q = p % q;
-			p = temp;
+		
+		if(q == 0) {
+			return p;
 		}
-		return p;
+		else {
+			return gcd(q, p % q);
+		}
 	}
 
 	/**
